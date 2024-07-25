@@ -35,6 +35,7 @@ export default class ProcessRepository implements IProcessRepository {
         type: string
         description: string
         created_at: string
+        active: boolean
       }]
     }[] = require("../../database/process.json")
 
@@ -59,7 +60,7 @@ export default class ProcessRepository implements IProcessRepository {
         element.document,
         element.created_by_id,
         element.updated_by_id,
-        element.movements.map(movement => new ProcessMovement(movement.id, movement.type, movement.description, movement.created_at)) // todo ver uma forma melhor de mapear
+        element.movements.map(movement => new ProcessMovement(movement.id, movement.type, movement.description, movement.created_at, movement.active, element.id)) // todo ver uma forma melhor de mapear
       ))
     });
   }
