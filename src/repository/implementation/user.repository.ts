@@ -10,6 +10,11 @@ export default class UserRepository implements IUserRepository {
     this.syncUsers()
   }
 
+  getById(id: number): User | undefined {
+    this.syncUsers()
+    return this.users.find(user => user.getId() == id)
+  }
+
   getByEmail(email: string): User | undefined {
     this.syncUsers()
     return this.users.find(user => user.getEmail() == email)

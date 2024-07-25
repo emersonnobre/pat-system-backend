@@ -1,8 +1,8 @@
 export default class ProcessMovement {
-  private id: number
-  private type: string
-  private description: string
-  private created_at: string
+  private _id: number
+  private _type: string
+  private _description: string
+  private _created_at: string
 
   constructor(
     id: number,
@@ -10,9 +10,22 @@ export default class ProcessMovement {
     description: string,
     created_at: string) 
   {
-    this.id = id
-    this.type = type
-    this.description = description
-    this.created_at = created_at
+    this._id = id
+    this._type = type
+    this._description = description
+    this._created_at = created_at
+  }
+
+  public get id(): number {
+    return this._id
+  }
+  public get type(): string {
+    return this._type
+  }
+  public get description(): string {
+    return this._description
+  }
+  public get created_at(): string {
+    return this._created_at
   }
 }

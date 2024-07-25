@@ -1,26 +1,26 @@
 import ProcessMovement from "./process-movement"
 
 export default class Process {
-  private id: number
-  private number: string
-  private created_at: string
-  private updated_at: string
-  private debt_amount: number
-  private judge_name: string
-  private distribution: string
-  private civil_court: string
-  private prescription_date: string
-  private prescription_date_validated: boolean
-  private executed: string
-  private subject: string
-  private court: string
-  private jurisdiction: string
-  private control_number: string
-  private document: string
-  private created_by_id: number
-  private updated_by_id: number
-  private movements?: ProcessMovement[]
-
+  private _id: number
+  private _number: string
+  private _created_at: string
+  private _updated_at: string
+  private _debt_amount: number
+  private _judge_name: string
+  private _distribution: string
+  private _civil_court: string
+  private _prescription_date: string
+  private _prescription_date_validated: boolean
+  private _executed: string
+  private _subject: string
+  private _court: string
+  private _jurisdiction: string
+  private _control_number: string
+  private _document: string
+  private _created_by_id: number
+  private _updated_by_id: number
+  private _movements?: ProcessMovement[] | undefined
+ 
   constructor(
     id: number,
     number: string,
@@ -42,24 +42,90 @@ export default class Process {
     updated_by_id: number,
     movements: ProcessMovement[]) 
   {
-    this.id = id
-    this.number = number
-    this.created_at = created_at
-    this.updated_at = updated_at
-    this.debt_amount = debt_amount
-    this.judge_name = judge_name
-    this.distribution = distribution
-    this.civil_court = civil_court
-    this.prescription_date = prescription_date
-    this.prescription_date_validated = prescription_date_validated
-    this.executed = executed
-    this.subject = subject
-    this.court = court
-    this.jurisdiction = jurisdiction
-    this.control_number = control_number
-    this.document = document
-    this.created_by_id = created_by_id
-    this.updated_by_id = updated_by_id
-    this.movements = movements
+    this._id = id
+    this._number = number
+    this._created_at = created_at
+    this._updated_at = updated_at
+    this._debt_amount = debt_amount
+    this._judge_name = judge_name
+    this._distribution = distribution
+    this._civil_court = civil_court
+    this._prescription_date = prescription_date
+    this._prescription_date_validated = prescription_date_validated
+    this._executed = executed
+    this._subject = subject
+    this._court = court
+    this._jurisdiction = jurisdiction
+    this._control_number = control_number
+    this._document = document
+    this._created_by_id = created_by_id
+    this._updated_by_id = updated_by_id
+    this._movements = movements
+  }
+
+  getCreatedById(): number {
+    return this.created_by_id
+  }
+
+  getUpdatedById(): number {
+    return this.updated_by_id
+  }
+
+  public get id(): number {
+    return this._id
+  }
+  public get number(): string {
+    return this._number
+  }
+  public get created_at(): string {
+    return this._created_at
+  }
+  public get updated_at(): string {
+    return this._updated_at
+  }
+  public get debt_amount(): number {
+    return this._debt_amount
+  }
+  public get judge_name(): string {
+    return this._judge_name
+  }
+  public get distribution(): string {
+    return this._distribution
+  }
+  public get civil_court(): string {
+    return this._civil_court
+  }
+  public get prescription_date(): string {
+    return this._prescription_date
+  }
+  public get prescription_date_validated(): boolean {
+    return this._prescription_date_validated
+  }
+  public get executed(): string {
+    return this._executed
+  }
+  public get subject(): string {
+    return this._subject
+  }
+  public get court(): string {
+    return this._court
+  }
+  public get jurisdiction(): string {
+    return this._jurisdiction
+  }
+  public get control_number(): string {
+    return this._control_number
+  }
+  public get document(): string {
+    return this._document
+  }
+  public get created_by_id(): number {
+    return this._created_by_id
+  }
+  public get updated_by_id(): number {
+    return this._updated_by_id
+  }
+  public get movements(): ProcessMovement[] | undefined {
+    return this._movements
   }
 }
