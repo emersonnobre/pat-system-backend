@@ -1,10 +1,7 @@
 import CreateUserResponse from "../../crossCutting/response/user/create-user.response"
 import User from "../../model/user"
+import { mapper } from "./automapper"
 
 export function userToCreateUserResponse(user: User): CreateUserResponse {
-  return {
-    id: user.getId(),
-    email: user.getEmail(),
-    name: user.getName(),
-  }
+  return mapper.map(user, User, CreateUserResponse)
 }

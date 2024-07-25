@@ -12,12 +12,12 @@ export default class UserRepository implements IUserRepository {
 
   getById(id: number): User | undefined {
     this.syncUsers()
-    return this.users.find(user => user.getId() == id)
+    return this.users.find(user => user.id == id)
   }
 
   getByEmail(email: string): User | undefined {
     this.syncUsers()
-    return this.users.find(user => user.getEmail() == email)
+    return this.users.find(user => user.email == email)
   }
 
   private syncUsers() {
@@ -36,6 +36,6 @@ export default class UserRepository implements IUserRepository {
   }
 
   getLastId(): number {
-    return this.users.length ? this.users[0].getId() : 0
+    return this.users.length ? this.users[0].id : 0
   }
 }

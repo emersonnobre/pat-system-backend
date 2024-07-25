@@ -31,7 +31,7 @@ export default class UserService implements IUserService {
     if (!validPassword)
       return { success: false, httpStatusCode: 401, message: "Senha inválida!", data: undefined }
     
-    const token = jwt.sign({ id: user.getId() }, process.env.JWT_SECRET || "chave_secreta", {
+    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET || "chave_secreta", {
       expiresIn: 86400
     })
 

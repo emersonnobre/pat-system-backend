@@ -27,16 +27,7 @@ export default class ProcessMapper {
   }
 
   modelToShortResponse(model: Process): ProcessShortResponse {
-    return {
-      id: model.id,
-      number: model.number,
-      debt_amount: model.debt_amount,
-      judge_name: model.judge_name,
-      distribution: model.distribution,
-      civil_court: model.civil_court,
-      prescription_date: model.prescription_date,
-      executed: model.executed
-    }
+    return mapper.map(model, Process, ProcessShortResponse)
   }
 
   private modelToProcessMovementResponse(model: ProcessMovement): ProcessMovementResponse {

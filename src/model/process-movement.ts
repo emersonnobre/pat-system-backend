@@ -1,3 +1,5 @@
+import { AutoMap } from "@automapper/classes"
+
 export default class ProcessMovement {
   private _id: number
   private _type: string
@@ -16,15 +18,19 @@ export default class ProcessMovement {
     this._created_at = created_at
   }
 
+  @AutoMap()
   public get id(): number {
     return this._id
   }
+  @AutoMap()
   public get type(): string {
     return this._type
   }
+  @AutoMap()
   public get description(): string {
     return this._description
   }
+  @AutoMap()
   public get created_at(): string {
     return this._created_at
   }
