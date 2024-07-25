@@ -2,13 +2,35 @@ import { inject, injectable } from "tsyringe"
 import { Request, Response } from "express"
 import ProcessService from "../service/implementation/process.service"
 import IProcessService from "../service/interface/i.process.service"
+import PaginationFilterRequest from "../crossCutting/request/comum/pagination.filter.request"
+import GetProcessesFilterRequest from "../crossCutting/request/process/get-processes.filter.request"
 
 @injectable()
 export default class ProcessController {
   constructor(@inject(ProcessService) private _processService: IProcessService) { }
 
   get(req: Request, res: Response) {
-    const response = this._processService.get()
+    const { 
+      limit, 
+      offset, 
+      judgeName,
+      executedName,
+      prescriptionDateStart,
+      prescriptionDateEnd,
+    } = req.query
+
+    const filters: PaginationFilterRequest<GetProcessesFilterRequest> = {
+      limit: Number(limit) || 10,
+      offset: Number(offset) || 0,
+      filter: {
+        judgeName: judgeName?.toString() || undefined,
+        executedName: executedName?.toString() || undefined,
+        prescriptionDateStart: prescriptionDateStart ? new Date(prescriptionDateStart.toString()) : undefined,
+        prescriptionDateEnd: prescriptionDateEnd ? new Date(prescriptionDateEnd.toString()) : undefined,
+      },
+    }
+
+    const response = this._processService.get(filters)
     res.status(response.httpStatusCode).json(response)
   }
 }

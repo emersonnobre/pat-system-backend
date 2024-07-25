@@ -36,6 +36,6 @@ export default class UserRepository implements IUserRepository {
   }
 
   getLastId(): number {
-    return this.users.length ? (this.users[0] || {}).getId() : 0
+    return this.users.length ? this.users[0].getId() : 0
   }
 }

@@ -1,11 +1,12 @@
 import Process from "../../model/process"
-import ProcessResponse from "../../crossCutting/response/process/process.response"
 import { inject, singleton } from "tsyringe"
+import ProcessResponse from "../../crossCutting/response/process/process.response"
 import UserRepository from "../../repository/implementation/user.repository"
 import IUserRepository from "../../repository/interface/i.user.repository"
 import { userToCreateUserResponse } from "./user.mapper"
 import ProcessMovement from "../../model/process-movement"
 import ProcessMovementResponse from "../../crossCutting/response/process/process-movement.response"
+import ProcessShortResponse from "../../crossCutting/response/process/process-short.response"
 
 @singleton()
 export default class ProcessMapper {
@@ -40,7 +41,20 @@ export default class ProcessMapper {
     }
   }
 
-  modelToProcessMovementResponse(model: ProcessMovement): ProcessMovementResponse {
+  modelToProcessShortResponse(model: Process): ProcessShortResponse {
+    return {
+      id: model.id,
+      number: model.number,
+      debt_amount: model.debt_amount,
+      judge_name: model.judge_name,
+      distribution: model.distribution,
+      civil_court: model.civil_court,
+      prescription_date: model.prescription_date,
+      executed: model.executed
+    }
+  }
+
+  private modelToProcessMovementResponse(model: ProcessMovement): ProcessMovementResponse {
     return {
       id: model.id,
       description: model.description,
