@@ -4,6 +4,7 @@ import ProcessService from "../service/implementation/process.service"
 import IProcessService from "../service/interface/i.process.service"
 import PaginationFilterRequest from "../crossCutting/request/comum/pagination.filter.request"
 import GetProcessesFilterRequest from "../crossCutting/request/process/get-processes.filter.request"
+import UpdateDocumentRequest from "../crossCutting/request/process/update-document.request"
 
 @injectable()
 export default class ProcessController {
@@ -41,6 +42,13 @@ export default class ProcessController {
   getById(req: Request, res: Response) {
     const { id } = req.params
     const response = this._processService.getById(Number(id))
+    res.status(response.httpStatusCode).json(response)
+  }
+
+  updateDocument(req: Request, res: Response) {
+    const { id } = req.params
+    const request: UpdateDocumentRequest = req.body
+    const response = this._processService.updateDocument(Number(id), request)
     res.status(response.httpStatusCode).json(response)
   }
 }

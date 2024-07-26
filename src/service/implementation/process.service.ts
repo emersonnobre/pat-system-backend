@@ -12,6 +12,7 @@ import Process from "../../model/process"
 import { SortOrder } from "../../util/types"
 import "../../util/prototypes/array.prototypes"
 import ProcessResponse from "../../crossCutting/response/process/process.response"
+import UpdateDocumentRequest from "../../crossCutting/request/process/update-document.request"
 
 @injectable()
 export default class ProcessService implements IProcessService {
@@ -46,6 +47,20 @@ export default class ProcessService implements IProcessService {
 
     const response = this._processMapper.modelToResponse(process)
     return { success: true, httpStatusCode: 200, data: response }
+  }
+
+  updateDocument(id: number, request: UpdateDocumentRequest): ApiResponse<undefined> {
+    const process = this._processRepository.getById(id)
+    if (!process)
+      return { success: false, httpStatusCode: 404, data: undefined, message: "Processo não encontrado!" }
+
+    process.document = request.document
+    process.updated_at = new Date().toISOString()
+    process.updated_by_id = request.updated_by_id
+
+    this._processRepository.save(process)
+
+    return { success: true, httpStatusCode: 204, data: undefined }
   }
 
   private filter(processes: Process[], filters: GetProcessesFilterRequest) {

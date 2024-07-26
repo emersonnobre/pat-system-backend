@@ -88,6 +88,9 @@ export default class Process {
   public get updated_at(): string {
     return this._updated_at
   }
+  public set updated_at(updated_at: string) {
+    this._updated_at = updated_at
+  }
   @AutoMap()
   public get debt_amount(): number {
     return this._debt_amount
@@ -136,6 +139,9 @@ export default class Process {
   public get document(): string {
     return this._document
   }
+  public set document(document: string) {
+    this._document = document
+  }
   @AutoMap()
   public get created_by_id(): number {
     return this._created_by_id
@@ -143,6 +149,9 @@ export default class Process {
   @AutoMap()
   public get updated_by_id(): number {
     return this._updated_by_id
+  }
+  public set updated_by_id(_updated_by_id: number) {
+    this._updated_by_id = _updated_by_id
   }
   @AutoMap()
   public get movements(): ProcessMovement[] | undefined {

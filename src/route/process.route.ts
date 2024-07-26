@@ -7,6 +7,9 @@ const controller = container.resolve(ProcessController)
 const router = Router()
 
 router.route("/processes").get(auth, controller.get.bind(controller))
-router.route("/processes/:id").get(auth, controller.getById.bind(controller))
+router.route("/processes/:id")
+  .get(auth, controller.getById.bind(controller))
+
+router.route("/processes/:id/document").put(auth, controller.updateDocument.bind(controller))
 
 export default router
