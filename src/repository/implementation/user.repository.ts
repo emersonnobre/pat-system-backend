@@ -2,6 +2,7 @@ import fs from "fs"
 import { injectable } from "tsyringe"
 import User from "../../model/user"
 import IUserRepository from "../interface/i.user.repository"
+import dbInterface from "../../database/interface"
 
 @injectable()
 export default class UserRepository implements IUserRepository {
@@ -21,11 +22,7 @@ export default class UserRepository implements IUserRepository {
   }
 
   private syncUsers() {
-    const json: { id: number; name: string; email: string; password: string}[] = require("../../database/user.json")
-    this.users = []
-    json.forEach(element => {
-      this.users.push(new User(element.id, element.name, element.email, element.password))
-    });
+    this.users = dbInterface.getUsers()
   }
 
   save(user: User): void {

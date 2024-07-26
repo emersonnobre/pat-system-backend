@@ -2,6 +2,7 @@ import fs from "fs"
 import { singleton } from "tsyringe"
 import IProcessMovementRepository from "../interface/i.process-movement.repository"
 import ProcessMovement from "../../model/process-movement"
+import dbInterface from "../../database/interface"
 
 @singleton()
 export default class ProcessMovementRepository implements IProcessMovementRepository {
@@ -11,15 +12,7 @@ export default class ProcessMovementRepository implements IProcessMovementReposi
   }
 
   private sync() {
-    const json: { 
-      _id: number
-      _type: string
-      _description: string
-      _created_at: string
-      _active: boolean
-      _process_id: number
-    }[] = require("../../database/process-movement.json")
-    this.movements = json.map(item => new ProcessMovement(item._id, item._type, item._description, item._created_at, item._active, item._process_id))
+    this.movements = dbInterface.getMovements()
   }
 
   getById(id: number): ProcessMovement | undefined {
