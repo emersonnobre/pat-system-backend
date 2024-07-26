@@ -3,4 +3,6 @@ export default interface GetProcessesFilterRequest {
   executedName?: string
   prescriptionDateStart?: Date
   prescriptionDateEnd?: Date
+  order: string
+  orderBy: string
 }

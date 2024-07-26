@@ -9,6 +9,7 @@ import PaginationFilterRequest from "../../crossCutting/request/comum/pagination
 import GetProcessesFilterRequest from "../../crossCutting/request/process/get-processes.filter.request"
 import PaginatedResponse from "../../crossCutting/response/comum/paginated.response"
 import Process from "../../model/process"
+import { SortOrder } from "../../util/types"
 import "../../util/prototypes/array.prototypes"
 
 @injectable()
@@ -32,8 +33,8 @@ export default class ProcessService implements IProcessService {
 
     filteredProcesses = filteredProcesses.skip(filters.offset).take(filters.limit)
     const mappedProcesses = filteredProcesses.map(process => this._processMapper.modelToProcessShortResponse(process))
-    paginatedResponse.data = mappedProcesses
-    
+    paginatedResponse.data = mappedProcesses.orderBy(filter.orderBy as keyof ProcessShortResponse, filter.order as SortOrder)
+
     return { success: true, httpStatusCode: 200, data: paginatedResponse }
   }
 

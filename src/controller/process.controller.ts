@@ -17,6 +17,8 @@ export default class ProcessController {
       executedName,
       prescriptionDateStart,
       prescriptionDateEnd,
+      order,
+      orderBy,
     } = req.query
 
     const filters: PaginationFilterRequest<GetProcessesFilterRequest> = {
@@ -27,6 +29,8 @@ export default class ProcessController {
         executedName: executedName?.toString() || undefined,
         prescriptionDateStart: prescriptionDateStart ? new Date(prescriptionDateStart.toString()) : undefined,
         prescriptionDateEnd: prescriptionDateEnd ? new Date(prescriptionDateEnd.toString()) : undefined,
+        order: order?.toString() || "asc",
+        orderBy: orderBy?.toString() || "number",
       },
     }
 

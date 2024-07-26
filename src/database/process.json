@@ -26,5 +26,61 @@
         "created_at": "2024-07-24"
       }
     ]
+  },
+  {
+    "id": 2,
+    "number": "2024/0002",
+    "created_at": "2024-07-25T03:38:14.112Z",
+    "updated_at": "2024-07-25T05:38:14.112Z",
+    "debt_amount": 1259.90,
+    "judge_name": "Emerson Nobre",
+    "distribution": "2024-07-25T03:39:14.112Z",
+    "civil_court": "2 vara",
+    "prescription_date": "2025-07-11",
+    "prescription_date_validated": false,
+    "executed": "Murilo Silva",
+    "subject": "Civel",
+    "court": "Tribunal de Campo Grande - MS",
+    "jurisdiction": "Dívida ativa",
+    "control_number": "2024/11909",
+    "document": "document example",
+    "created_by_id": 1,
+    "updated_by_id": 1,
+    "movements": [
+      {
+        "id": 1,
+        "type": "Penhora",
+        "description": "Lorem ipsum amen",
+        "created_at": "2024-07-24"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "number": "2024/0003",
+    "created_at": "2024-07-25T03:38:14.112Z",
+    "updated_at": "2024-07-25T05:38:14.112Z",
+    "debt_amount": 1259.90,
+    "judge_name": "Emerson Nobre",
+    "distribution": "2024-07-25T03:39:14.112Z",
+    "civil_court": "2 vara",
+    "prescription_date": "2025-07-16",
+    "prescription_date_validated": false,
+    "executed": "Murilo Silva",
+    "subject": "Civel",
+    "court": "Tribunal de Campo Grande - MS",
+    "jurisdiction": "Dívida ativa",
+    "control_number": "2024/11909",
+    "document": "document example",
+    "created_by_id": 1,
+    "updated_by_id": 1,
+    "movements": [
+      {
+        "id": 1,
+        "type": "Penhora",
+        "description": "Lorem ipsum amen",
+        "created_at": "2024-07-24"
+      }
+    ]
   }
 ]
