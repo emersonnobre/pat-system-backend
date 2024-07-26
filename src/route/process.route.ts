@@ -11,5 +11,6 @@ router.route("/processes/:id")
   .get(auth, controller.getById.bind(controller))
 
 router.route("/processes/:id/document").put(auth, controller.updateDocument.bind(controller))
+router.route("/processes/:id/prescription/valid").put(auth, controller.updatePrescriptionValidation.bind(controller))
 
 export default router

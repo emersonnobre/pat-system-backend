@@ -115,6 +115,9 @@ export default class Process {
   public get prescription_date_validated(): boolean {
     return this._prescription_date_validated
   }
+  public set prescription_date_validated(_prescription_date_validated: boolean) {
+    this._prescription_date_validated = _prescription_date_validated
+  }
   @AutoMap()
   public get executed(): string {
     return this._executed

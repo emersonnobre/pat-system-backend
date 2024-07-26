@@ -5,6 +5,7 @@ import IProcessService from "../service/interface/i.process.service"
 import PaginationFilterRequest from "../crossCutting/request/comum/pagination.filter.request"
 import GetProcessesFilterRequest from "../crossCutting/request/process/get-processes.filter.request"
 import UpdateDocumentRequest from "../crossCutting/request/process/update-document.request"
+import UpdatePrescriptionDateValidationRequest from "../crossCutting/request/process/update-prescription-date-validation.request"
 
 @injectable()
 export default class ProcessController {
@@ -49,6 +50,13 @@ export default class ProcessController {
     const { id } = req.params
     const request: UpdateDocumentRequest = req.body
     const response = this._processService.updateDocument(Number(id), request)
+    res.status(response.httpStatusCode).json(response)
+  }
+
+  updatePrescriptionValidation(req: Request, res: Response) {
+    const { id } = req.params
+    const request: UpdatePrescriptionDateValidationRequest = req.body
+    const response = this._processService.updatePrescriptionValidation(Number(id), request)
     res.status(response.httpStatusCode).json(response)
   }
 }

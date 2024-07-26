@@ -13,6 +13,7 @@ import { SortOrder } from "../../util/types"
 import "../../util/prototypes/array.prototypes"
 import ProcessResponse from "../../crossCutting/response/process/process.response"
 import UpdateDocumentRequest from "../../crossCutting/request/process/update-document.request"
+import UpdatePrescriptionDateValidationRequest from "../../crossCutting/request/process/update-prescription-date-validation.request"
 
 @injectable()
 export default class ProcessService implements IProcessService {
@@ -55,6 +56,20 @@ export default class ProcessService implements IProcessService {
       return { success: false, httpStatusCode: 404, data: undefined, message: "Processo não encontrado!" }
 
     process.document = request.document
+    process.updated_at = new Date().toISOString()
+    process.updated_by_id = request.updated_by_id
+
+    this._processRepository.save(process)
+
+    return { success: true, httpStatusCode: 204, data: undefined }
+  }
+
+  updatePrescriptionValidation(id: number, request: UpdatePrescriptionDateValidationRequest): ApiResponse<undefined> {
+    const process = this._processRepository.getById(id)
+    if (!process)
+      return { success: false, httpStatusCode: 404, data: undefined, message: "Processo não encontrado!" }
+
+    process.prescription_date_validated = request._prescription_date_validated
     process.updated_at = new Date().toISOString()
     process.updated_by_id = request.updated_by_id
 
