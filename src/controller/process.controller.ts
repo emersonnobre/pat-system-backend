@@ -37,4 +37,10 @@ export default class ProcessController {
     const response = this._processService.get(filters)
     res.status(response.httpStatusCode).json(response)
   }
+
+  getById(req: Request, res: Response) {
+    const { id } = req.params
+    const response = this._processService.getById(Number(id))
+    res.status(response.httpStatusCode).json(response)
+  }
 }

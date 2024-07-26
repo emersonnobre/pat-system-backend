@@ -11,6 +11,7 @@ import PaginatedResponse from "../../crossCutting/response/comum/paginated.respo
 import Process from "../../model/process"
 import { SortOrder } from "../../util/types"
 import "../../util/prototypes/array.prototypes"
+import ProcessResponse from "../../crossCutting/response/process/process.response"
 
 @injectable()
 export default class ProcessService implements IProcessService {
@@ -32,10 +33,19 @@ export default class ProcessService implements IProcessService {
       return { success: false, httpStatusCode: 404, data: paginatedResponse }
 
     filteredProcesses = filteredProcesses.skip(filters.offset).take(filters.limit)
-    const mappedProcesses = filteredProcesses.map(process => this._processMapper.modelToProcessShortResponse(process))
+    const mappedProcesses = filteredProcesses.map(process => this._processMapper.modelToShortResponse(process))
     paginatedResponse.data = mappedProcesses.orderBy(filter.orderBy as keyof ProcessShortResponse, filter.order as SortOrder)
 
     return { success: true, httpStatusCode: 200, data: paginatedResponse }
+  }
+
+  getById(id: number): ApiResponse<ProcessResponse> {
+    const process = this._processRepository.getById(id)
+    if (!process)
+      return { success: false, httpStatusCode: 404, data: null, message: "Processo não encontrado!" }
+
+    const response = this._processMapper.modelToResponse(process)
+    return { success: true, httpStatusCode: 200, data: response }
   }
 
   private filter(processes: Process[], filters: GetProcessesFilterRequest) {

@@ -68,4 +68,9 @@ export default class ProcessRepository implements IProcessRepository {
     this.syncProcesses()
     return this.processes
   }
+
+  getById(id: number): Process | null {
+    this.syncProcesses()
+    return this.processes.find(process => process.id == id)
+  }
 }

@@ -1,3 +1,4 @@
+import { AutoMap } from "@automapper/classes"
 import ProcessMovement from "./process-movement"
 
 export default class Process {
@@ -71,60 +72,79 @@ export default class Process {
     return this.updated_by_id
   }
 
+  @AutoMap()
   public get id(): number {
     return this._id
   }
+  @AutoMap()
   public get number(): string {
     return this._number
   }
+  @AutoMap()
   public get created_at(): string {
     return this._created_at
   }
+  @AutoMap()
   public get updated_at(): string {
     return this._updated_at
   }
+  @AutoMap()
   public get debt_amount(): number {
     return this._debt_amount
   }
+  @AutoMap()
   public get judge_name(): string {
     return this._judge_name
   }
+  @AutoMap()
   public get distribution(): string {
     return this._distribution
   }
+  @AutoMap()
   public get civil_court(): string {
     return this._civil_court
   }
+  @AutoMap()
   public get prescription_date(): string {
     return this._prescription_date
   }
+  @AutoMap()
   public get prescription_date_validated(): boolean {
     return this._prescription_date_validated
   }
+  @AutoMap()
   public get executed(): string {
     return this._executed
   }
+  @AutoMap()
   public get subject(): string {
     return this._subject
   }
+  @AutoMap()
   public get court(): string {
     return this._court
   }
+  @AutoMap()
   public get jurisdiction(): string {
     return this._jurisdiction
   }
+  @AutoMap()
   public get control_number(): string {
     return this._control_number
   }
+  @AutoMap()
   public get document(): string {
     return this._document
   }
+  @AutoMap()
   public get created_by_id(): number {
     return this._created_by_id
   }
+  @AutoMap()
   public get updated_by_id(): number {
     return this._updated_by_id
   }
+  @AutoMap()
   public get movements(): ProcessMovement[] | undefined {
     return this._movements
   }
