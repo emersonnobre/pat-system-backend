@@ -34,9 +34,10 @@ export default class ProcessService implements IProcessService {
     if (totalCount == 0)
       return { success: false, httpStatusCode: 404, data: paginatedResponse }
 
+    filteredProcesses = filteredProcesses.orderBy(filter.orderBy as keyof ProcessShortResponse, filter.order as SortOrder)
     filteredProcesses = filteredProcesses.skip(filters.offset).take(filters.limit)
     const mappedProcesses = filteredProcesses.map(process => this._processMapper.modelToShortResponse(process))
-    paginatedResponse.data = mappedProcesses.orderBy(filter.orderBy as keyof ProcessShortResponse, filter.order as SortOrder)
+    paginatedResponse.data = mappedProcesses
 
     return { success: true, httpStatusCode: 200, data: paginatedResponse }
   }

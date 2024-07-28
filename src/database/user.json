@@ -4,5 +4,11 @@
     "_name": "Admin",
     "_email": "admin@example.com",
     "_password": "$2b$10$1XPySalu1ovbRAZBrphWgOMzYj/P1lvVQSIo3R2BkpCTLUyXpq4.G"
+  },
+  {
+    "_id": 2,
+    "_name": "Emerson",
+    "_email": "emerson@example.com",
+    "_password": "$2b$10$u1Re6aFPdIP4AUCQZ/yzvuUFLySnkByNOa8oLT.kWtiJ2s5GsUAQu"
   }
 ]
