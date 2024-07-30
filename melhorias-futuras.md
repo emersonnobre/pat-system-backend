@@ -6,3 +6,6 @@ Este documento lista algumas melhorias que julgo serem importantes para futuras 
 4) Implementação de autorização nas rotas da API;
 5) Documentação interativa com Swagger e OpenAPI;
 6) Serviço de cache para buscas mais eficientes;
+7) Configurar auditoria do sistema (rastreio de informações);
+8) Implementar testes unitários e testes de integração;
+9) Implementar variáveis de ambiente
