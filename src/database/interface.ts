@@ -8,7 +8,7 @@ const getUsers = () => {
     _name: string
     _email: string
     _password: string
-  }[] = require("./user.json")
+  }[] = require("../../user.json")
   return json.map(item => new User(item._id, item._name, item._email, item._password))
 }
 
@@ -20,7 +20,7 @@ const getMovements = () => {
     _created_at: string
     _active: boolean
     _process_id: number
-  }[] = require("./process-movement.json")
+  }[] = require("../../process-movement.json")
   return json.map(item => new ProcessMovement(item._id, item._type, item._description, item._created_at, item._active, item._process_id))
 }
 
@@ -32,7 +32,7 @@ const getMovementsByProcess = (process_id: number) => {
     _created_at: string
     _active: boolean
     _process_id: number
-  }[] = require("./process-movement.json")
+  }[] = require("../../process-movement.json")
   return json.filter(item => item._process_id == process_id)
     .map(item => new ProcessMovement(item._id, item._type, item._description, item._created_at, item._active, item._process_id))
 }
@@ -57,7 +57,7 @@ const getProcesses = () => {
     _document: string
     _created_by_id: number
     _updated_by_id: number
-  }[] = require("./process.json")
+  }[] = require("../../process.json")
   return json.map(item => {
     const movements = getMovementsByProcess(item._id)
     return new Process(
