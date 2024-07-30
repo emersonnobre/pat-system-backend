@@ -3,4 +3,5 @@ export default interface ProcessMovementResponse {
   type: string
   description: string
   created_at: string
+  active: boolean
 }

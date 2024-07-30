@@ -21,7 +21,7 @@ export default class ProcessMapper {
     
     response.created_by = userToCreateUserResponse(created_by)
     response.updated_by = userToCreateUserResponse(updated_by)
-    response.movements = model.movements?.map(movement => this.modelToProcessMovementResponse(movement))
+    response.movements = model.movements?.map(movement => this.modelToProcessMovementResponse(movement)).orderBy("created_at", "desc")
     
     return response
   }
@@ -35,7 +35,8 @@ export default class ProcessMapper {
       id: model.id,
       description: model.description,
       type: model.type,
-      created_at: model.created_at
+      created_at: model.created_at,
+      active: model.active,
     }
   }
 }
