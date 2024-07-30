@@ -1,0 +1,327 @@
+{
+	"info": {
+		"_postman_id": "1d55e1d3-237f-446b-8bbd-52aa15539c29",
+		"name": "ledes-pat",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17372562"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Admin\",\r\n    \"email\": \"admin@example.com\",\r\n    \"password\": \"d#safi0ledEs\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://pat-system-backend.onrender.com/user",
+							"protocol": "https",
+							"host": [
+								"pat-system-backend",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "auth",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin@example.com\",\r\n    \"password\": \"d#safi0ledEs\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://pat-system-backend.onrender.com/user/auth",
+							"protocol": "https",
+							"host": [
+								"pat-system-backend",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"user",
+								"auth"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "processes",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://pat-system-backend.onrender.com/processes?prescriptionDateEnd=2025-08-12&orderBy=prescription_date",
+							"protocol": "https",
+							"host": [
+								"pat-system-backend",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"processes"
+							],
+							"query": [
+								{
+									"key": "judgeName",
+									"value": "Emersson",
+									"disabled": true
+								},
+								{
+									"key": "executedName",
+									"value": "Murils",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "offset",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "prescriptionDateStart",
+									"value": "2025-07-12",
+									"disabled": true
+								},
+								{
+									"key": "prescriptionDateEnd",
+									"value": "2025-08-12"
+								},
+								{
+									"key": "order",
+									"value": "desc",
+									"disabled": true
+								},
+								{
+									"key": "orderBy",
+									"value": "prescription_date"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://pat-system-backend.onrender.com/processes/1",
+							"protocol": "https",
+							"host": [
+								"pat-system-backend",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"processes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update document",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"document\": \"ah document0 teste2\",\r\n    \"updated_by_id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://pat-system-backend.onrender.com/processes/3/document",
+							"protocol": "https",
+							"host": [
+								"pat-system-backend",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"processes",
+								"3",
+								"document"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update prescription validation",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_prescription_date_validated\": true,\r\n    \"updated_by_id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://pat-system-backend.onrender.com/processes/1/prescription/valid",
+							"protocol": "https",
+							"host": [
+								"pat-system-backend",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"processes",
+								"1",
+								"prescription",
+								"valid"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "movements",
+			"item": [
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzIxODc1MjE2LCJleHAiOjE3MjE5NjE2MTZ9.gYuK78E35JbIOTQIR6UuGGpjig8I3xpuMKU_eGbHzAQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"Penhora tesste\",\r\n    \"active\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/movements/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"movements",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://pat-system-backend.onrender.com/check",
+					"protocol": "https",
+					"host": [
+						"pat-system-backend",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"check"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
